@@ -1,0 +1,54 @@
+From bf4676d04a486e55202b9ec57186e9723e2d8f00 Mon Sep 17 00:00:00 2001
+From: Henry <cryptix@riseup.net>
+Date: Mon, 20 Dec 2021 12:43:43 +0100
+Subject: [PATCH] fix build of enum-map dependency
+
+the mentioned enum-map PR is closed but in the process the branch
+previously pointed to here was deleted. This pinned commit here is the
+merge of that PR.
+---
+ Cargo.lock | 4 ++--
+ Cargo.toml | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 49878ac..21e3c47 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -244,7 +244,7 @@ dependencies = [
+ [[package]]
+ name = "enum-map"
+ version = "2.0.0-1"
+-source = "git+https://gitlab.com/bit_network/enum-map.git?branch=impl_fromiter#deca464c68029240788c0da895fc6f0a52cd644d"
++source = "git+https://gitlab.com/KonradBorowski/enum-map.git?rev=5694f9e1#5694f9e169be8e192d3eb015f7a95cb53a792e3e"
+ dependencies = [
+  "enum-map-derive",
+ ]
+@@ -252,7 +252,7 @@ dependencies = [
+ [[package]]
+ name = "enum-map-derive"
+ version = "0.7.0"
+-source = "git+https://gitlab.com/bit_network/enum-map.git?branch=impl_fromiter#deca464c68029240788c0da895fc6f0a52cd644d"
++source = "git+https://gitlab.com/KonradBorowski/enum-map.git?rev=5694f9e1#5694f9e169be8e192d3eb015f7a95cb53a792e3e"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+diff --git a/Cargo.toml b/Cargo.toml
+index 4b66c31..adc6947 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -24,8 +24,9 @@ chrono = "0.4.19"
+ clap = { version = "3.0.0-rc.4", features = ["cargo"] }
+ # Until this is merged, we have to use the pull-requesters- version:
+ # https://gitlab.com/KonradBorowski/enum-map/-/merge_requests/40
+-#enum-map = "1.1.1"
+-enum-map = { git = "https://gitlab.com/bit_network/enum-map.git", branch = "impl_fromiter" }
++# the above PR is merged but not yet available with a tagged version
++#enum-map = "1.1.x"
++enum-map = { git = "https://gitlab.com/KonradBorowski/enum-map.git", rev = "5694f9e1" }
+ git2 = "0.13"
+ human-panic = "1.0.3"
+ lazy_static = "1.4.0"
+-- 
+2.31.1
+
