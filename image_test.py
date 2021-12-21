@@ -2,7 +2,7 @@ import sys
 import pytest
 import docker
 
-IMAGE="kibotpp:test"
+IMAGE="kibotwithextras:test"
 client = docker.from_env()
 
 @pytest.mark.parametrize(
@@ -54,6 +54,5 @@ def test_image_injector():
 
 
 # utils
-
 def run_image(cmd):
     return client.containers.run(IMAGE, cmd, remove=True, detach=False)
