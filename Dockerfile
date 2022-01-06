@@ -2,16 +2,14 @@ FROM rust:latest AS rusttools
 
 WORKDIR /apps
 
-ADD ./0001-fix-build-of-enum-map-dependency.patch /apps/patches/0001-fix-build-of-enum-map-dependency.patch
 RUN cd /apps && \
   git config --global user.email "buildbot@fabcity.hamburg" && \
   git config --global user.name "the fab city hamburg build bot" && \
-  git clone https://github.com/hoijui/projvar.git && \
+  git clone --branch=0.9.0 https://github.com/hoijui/projvar.git && \
   git clone https://github.com/hoijui/kicad-text-injector.git
 
 # build projvar
 RUN cd /apps/projvar && \ 
-  git am ../patches/0001-fix-build-of-enum-map-dependency.patch && \
   cargo build --release
 
 # build text injector
@@ -25,7 +23,7 @@ COPY --from=rusttools /apps/projvar/target/release/projvar /usr/local/bin/projva
 COPY --from=rusttools /apps/kicad-text-injector/target/release/kicad-text-injector /usr/local/bin/kicad-text-injector
 
 # update debian
-RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential git python3-pip libffi-dev qrencode fonts-liberation2
+RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential wget git python3-pip libffi-dev qrencode fonts-liberation2
 # install image-injector
 RUN mkdir -p /usr/src/ && cd /usr/src && \
   git clone "https://github.com/hoijui/kicad-image-injector.git" && \

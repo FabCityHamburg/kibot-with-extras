@@ -9,7 +9,7 @@ client = docker.from_env()
         "tool,version",
         [
             ("echo hello world", b"hello world\n"), # has image
-            ("projvar -V", b"projvar 0.8.0\n"),
+            ("projvar -V", b"projvar 0.9.0\n"),
             ("kicad-text-injector -V", b"kicad-text-injector 0.2.4\n"),
             ("kibot -V", b"KiBot 0.11.0 - Copyright 2018-2021, Salvador E. Tropea/INTI/John Beard - License: GPL v3+\n"),
             ("pcbdraw --version", b"PcbDraw 0.6.0\n"),
