@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
+#
+# SPDX-License-Identifier: Unlicense
+
+stages:
+  - build
+  - test
+  - publish # on main branch, update docker hub
+  - cleanup # remove the tag so that we can garbage collect
+
+
+variables:
+  IMAGE_NAME: 'fabcityhamburg/kibotwithextras'
+  PIP_CACHE_DIR: '$CI_PROJECT_DIR/.cache/pip'
+  VIRTUAL_ENV: '$CI_PROJECT_DIR/.venv'
+
+build:
+  stage: build
+  tags:
+    - docker-host
+    - managed-by-debops
+  script:
+    - docker build --tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+
+test:
+  stage: test
+  image: python:3.9-bullseye
+  tags:
+    - docker-host
+    - managed-by-debops
+  script:
+    - python3 -m venv $VIRTUAL_ENV
+    - source $VIRTUAL_ENV/bin/activate
+    - python3 -m pip install -r requirements.txt
+    - pytest
+
+publish:
+  stage: publish
+  tags:
+    - docker-host
+    - managed-by-debops
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA $IMAGE_NAME:nightly
+    - docker push $IMAGE_NAME:nightly
+    - docker logout
+  only:
+    - main
+
+cleanup:
+  stage: cleanup
+  tags:
+    - docker-host
+    - managed-by-debops
+  script:
+    - docker rmi $IMAGE_NAME:$CI_COMMIT_SHORT_SHA

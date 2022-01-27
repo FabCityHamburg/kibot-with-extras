@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
+#
+# SPDX-License-Identifier: MIT
+
 with import <nixpkgs> {};
 
 let

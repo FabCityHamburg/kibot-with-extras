@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Kibot with extras
 
 This docker image extends [kibot_auto](https://github.com/INTI-CMNB/kicad_auto) with the following tools:
@@ -8,9 +14,11 @@ This docker image extends [kibot_auto](https://github.com/INTI-CMNB/kicad_auto) 
 
 The aim is to make all of these more easily accessable and build workflows, like pre-commit hooks or CI jobs with them.
 
-# Building this image
+# Using this image
 
-**TODO**: publish on docker hub
+It is published to docker hub as `fabcityhamburg/kibotwithextras`. The current version is `beta1`.
+
+# Building this image
 
 ```
 git clone https://gitlab.fabcity.hamburg/software/wp4-os-tools/task-3-osh-project-tools/kibot-with-extras
@@ -23,9 +31,12 @@ there is a test pytest based test script that ensure all the tools are available
 
 Once you have these, simply run `pytest` in this repo to run the tests.
 
-# Example
+# Local Usage Example
 
-The `oseg` fork of the [for-science](https://github.com/hoijui/for-science-keyboard/tree/oseg) split keyboard shows what this enables.
+The `oseg` fork of the [for-science](https://github.com/hoijui/for-science-keyboard/tree/oseg) split keyboard shows an example of how this can be used:
+
+
+With a few options, the docker image can be used on a folder in your filesystem. The important things are the volume maps to keep the user IDs intact.
 
 ```bash
 
@@ -46,6 +57,5 @@ docker run --rm -it \
   --volume="/etc/group:/etc/group:ro" \
   --volume="/etc/passwd:/etc/passwd:ro" \
   --volume="/etc/shadow:/etc/shadow:ro" \
-  kibotwithextras:test /bin/bash -c "cd workdir; ./ci-run"
+  fabcityhamburg/kibotwithextras:beta1 /bin/bash -c "cd workdir; ./ci-run"
 ```
-

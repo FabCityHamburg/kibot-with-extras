@@ -1,8 +1,20 @@
+# SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
+#
+# SPDX-License-Identifier: MIT
+
 import sys
 import pytest
 import docker
+import os
 
-IMAGE="kibotwithextras:test"
+# check if we have CI variables or fall back to defaults
+IMAGE_NAME="fabcityhamburg/kibotwithextras"
+IMAGE_NAME = os.environ.get("IMAGE_NAME", IMAGE_NAME)
+IMAGE_VERSION = os.environ.get("CI_COMMIT_SHORT_SHA", "test")
+
+IMAGE = IMAGE_NAME + ':' + IMAGE_VERSION
+
+# start docker client connection
 client = docker.from_env()
 
 @pytest.mark.parametrize(
