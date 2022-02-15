@@ -13,11 +13,11 @@ RUN cd /apps && \
   git clone https://github.com/hoijui/kicad-text-injector.git
 
 # build projvar
-RUN cd /apps/projvar && \ 
+RUN cd /apps/projvar && \
   cargo build --release
 
 # build text injector
-RUN cd /apps/kicad-text-injector && \ 
+RUN cd /apps/kicad-text-injector && \
   cargo build --release
 
 # begin from final base image with kibot etc
