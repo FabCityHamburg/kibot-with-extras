@@ -2,10 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-import sys
+import os
 import pytest
 import docker
-import os
 
 # check if we have CI variables or fall back to defaults
 IMAGE_NAME="fabcityhamburg/kibotwithextras"
@@ -25,7 +24,7 @@ client = docker.from_env()
             ("kicad-text-injector -V", b"kicad-text-injector 0.2.4\n"),
             ("kibot -V", b"KiBot 0.11.0 - Copyright 2018-2021, Salvador E. Tropea/INTI/John Beard - License: GPL v3+\n"),
             ("pcbdraw --version", b"PcbDraw 0.6.0\n"),
-])
+        ])
 def test_has_tools(tool, version):
     out = run_image(tool)
     assert out == version
