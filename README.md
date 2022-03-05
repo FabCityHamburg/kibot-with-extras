@@ -30,7 +30,7 @@ The current version is `beta1`.
 ## Building this image
 
 ```
-git clone https://gitlab.fabcity.hamburg/software/wp4-os-tools/task-3-osh-project-tools/kibot-with-extras
+git clone https://github.com/FabCityHamburg/kibot-with-extras.git
 docker build -t kibotwithextras:test .
 ```
 
