@@ -45,5 +45,5 @@ ENV TOOL_IMG_INJ /usr/src/kicad-image-injector/placeholder2image.py
 # HACK For "shell not found" error when starting the resulting image.
 #      See details here:
 #      <https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27614#note_517446691>
-ENTRYPOINT ["/bin/bash", "-c", "ln -snf /bin/bash /bin/sh && /bin/bash -c $0" ]
+#ENTRYPOINT ["/bin/bash", "-c", "ln -snf /bin/bash /bin/sh && /bin/bash -c $0" ]
 
