@@ -45,7 +45,8 @@ simply run `pytest` in this repo to run the tests.
 
 # Local Usage Example
 
-The `testing` fork of the [for-science](https://github.com/hoijui/for-science-keyboard/tree/testing)
+The `testing` fork of the [for-science](
+https://github.com/hoijui/for-science-keyboard/tree/testing)
 split keyboard shows an example of how this can be used:
 
 With a few options,
