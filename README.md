@@ -6,42 +6,55 @@ SPDX-License-Identifier: CC0-1.0
 
 # Kibot with extras
 
-This docker image extends [kibot_auto](https://github.com/INTI-CMNB/kicad_auto) with the following tools:
+This docker image extends [`kibot_auto`](https://github.com/INTI-CMNB/kicad_auto)
+with the following tools:
 
-* [projvar](https://github.com/hoijui/projvar) - A tool that tries to ensure a certain small set of project related environment variables are set. 
-* [kicad-text-injector](https://github.com/hoijui/kicad-text-injector) - A CLI tool that allows you to post-process your KiCad PCB files, by replacing variables of the type `${NAME}` in your text elements. 
-* [kicad-image-injector](https://github.com/hoijui/kicad-image-injector) - A stand-alone (python) tool to replace rectangular template areas drawn onto a KiCad PCB with B&W images or QR-Codes. 
+* [projvar](https://github.com/hoijui/projvar) -
+  A tool that tries to ensure a certain small set
+  of project related environment variables are set.
+* [kicad-text-injector](https://github.com/hoijui/kicad-text-injector) -
+  A CLI tool that allows you to post-process your KiCad PCB files,
+  by replacing variables of the type `${NAME}` in your text elements.
+* [kicad-image-injector](https://github.com/hoijui/kicad-image-injector) -
+  A stand-alone (python) tool to replace rectangular template areas
+  drawn onto a KiCad PCB with B&W images or QR-Codes.
 
-The aim is to make all of these more easily accessable and build workflows, like pre-commit hooks or CI jobs with them.
+The aim is to make all of these more easily accessable and build workflows,
+like pre-commit hooks or CI jobs with them.
 
-# Using this image
+## Using this image
 
-It is published to docker hub as `fabcityhamburg/kibotwithextras`. The current version is `beta1`.
+It is published to docker hub as `fabcityhamburg/kibotwithextras`.
+The current version is `beta1`.
 
-# Building this image
+## Building this image
 
 ```
 git clone https://gitlab.fabcity.hamburg/software/wp4-os-tools/task-3-osh-project-tools/kibot-with-extras
 docker build -t kibotwithextras:test .
 ```
 
-# Testing
+## Testing
 
-there is a test pytest based test script that ensure all the tools are available inside the image. It depends on `docker` and `pytest` from pip.
+There is a pytest based test script
+that ensure all the tools are available inside the image.
+It depends on `docker` and `pytest` from pip.
 
-Once you have these, simply run `pytest` in this repo to run the tests.
+Once you have these,
+simply run `pytest` in this repo to run the tests.
 
 # Local Usage Example
 
-The `oseg` fork of the [for-science](https://github.com/hoijui/for-science-keyboard/tree/oseg) split keyboard shows an example of how this can be used:
+The `testing` fork of the [for-science](https://github.com/hoijui/for-science-keyboard/tree/testing)
+split keyboard shows an example of how this can be used:
 
-
-With a few options, the docker image can be used on a folder in your filesystem. The important things are the volume maps to keep the user IDs intact.
+With a few options,
+the docker image can be used on a folder in your filesystem.
+The important things are the volume maps to keep the user IDs intact.
 
 ```bash
-
 # clone the example project
-git clone --branch=oseg https://github.com/hoijui/for-science-keyboard
+git clone --branch=testing https://github.com/hoijui/for-science-keyboard
 
 # enable docker to run the image with access to the project as the current user
 export USER_ID=$(id -u)
