@@ -4,6 +4,10 @@ SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
 SPDX-License-Identifier: CC0-1.0
 -->
 
+[![REUSE status](
+    https://api.reuse.software/badge/github.com/FabCityHamburg/kibot-with-extras)](
+    https://api.reuse.software/info/github.com/FabCityHamburg/kibot-with-extras)
+
 # Kibot with extras
 
 This docker image extends [`kibot_auto`](https://github.com/INTI-CMNB/kicad_auto)
