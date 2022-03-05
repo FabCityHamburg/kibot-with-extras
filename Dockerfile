@@ -9,6 +9,7 @@ WORKDIR /apps
 RUN cd /apps && \
   git config --global user.email "buildbot@fabcity.hamburg" && \
   git config --global user.name "the fab city hamburg build bot" && \
+  git config --global advice.detachedHead false && \
   git clone --branch=0.9.0 https://github.com/hoijui/projvar.git && \
   git clone https://github.com/hoijui/kicad-text-injector.git
 
