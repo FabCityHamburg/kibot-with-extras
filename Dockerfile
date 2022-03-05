@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2022 Fab City Hamburg e.V.
+# SPDX-FileCopyrightText: 2022 Robin Vobruba <hoijui.quaero@gmail.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -48,3 +49,6 @@ ENV TOOL_IMG_INJ /usr/src/kicad-image-injector/placeholder2image.py
 #      <https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27614#note_517446691>
 #ENTRYPOINT ["/bin/bash", "-c", "ln -snf /bin/bash /bin/sh && /bin/bash -c $0" ]
 
+LABEL maintainer="Robin Vobruba <hoijui.quaero@gmail.com>"
+LABEL description="A CI base image for generating output for a KiCad based project - \
+https://github.com/FabCityHamburg/kibot-with-extras"
