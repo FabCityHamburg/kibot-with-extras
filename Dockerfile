@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-FROM rust:latest AS rusttools
+FROM rust:1.56 AS rusttools
 
 WORKDIR /apps
 
