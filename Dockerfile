@@ -35,7 +35,8 @@ COPY --from=rusttools \
   "$TOOL_TXT_INJ"
 
 # update debian
-RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential wget git python3-pip libffi-dev qrencode fonts-liberation2
+RUN apt-get update && apt-get -y upgrade && \
+  apt-get install -y build-essential wget git python3-pip libffi-dev qrencode fonts-liberation2
 # install image-injector
 RUN mkdir -p /usr/src/ && cd /usr/src && \
   git clone "https://github.com/hoijui/kicad-image-injector.git" && \
