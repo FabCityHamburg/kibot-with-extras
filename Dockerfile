@@ -40,7 +40,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential w
 RUN mkdir -p /usr/src/ && cd /usr/src && \
   git clone "https://github.com/hoijui/kicad-image-injector.git" && \
   cd kicad-image-injector && \
-  git checkout latest_compat_pcbnew_5 \
+  git checkout latest_compat_pcbnew_5 && \
   pip3 install -r ./requirements.txt
 ENV TOOL_IMG_INJ /usr/src/kicad-image-injector/placeholder2image.py
 
